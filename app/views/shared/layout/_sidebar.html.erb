@@ -32,10 +32,15 @@
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="fa fa-circle-o nav-icon"></i>
+              <object>
               <p>
                 <%= agenda.title %>
                 <i class="right fa fa-angle-left"></i>
+                <% if agenda.user_id == current_user.id %>
+                  <%= link_to "削除", agenda_path(agenda),method: :delete %>
+                <% end %>
               </p>
+              </object>
             </a>
             <ul class="nav nav-treeview" style="display: block;">
               <% agenda.articles.each do |article| %>
